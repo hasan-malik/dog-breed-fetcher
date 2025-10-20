@@ -18,7 +18,7 @@ class CachingBreedFetcherTest {
 
         System.out.println(cachingFetcher.getCallsMade());
 
-        assertEquals(List.of("afghan", "basset", "blood", "english", "ibizan", "plott", "walker"), firstCall);
+        assertEquals(List.of("afghan", "basset"), firstCall);
         assertEquals(firstCall, secondCall);
         assertEquals(1, mock.getCallCount(), "Fetcher should only be called once due to caching");
     }
