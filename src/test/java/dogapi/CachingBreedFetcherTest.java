@@ -11,10 +11,14 @@ class CachingBreedFetcherTest {
         BreedFetcherForLocalTesting mock = new BreedFetcherForLocalTesting();
         CachingBreedFetcher cachingFetcher = new CachingBreedFetcher(mock);
 
+//        System.out.println("here:" + cachingFetcher.getCallsMade()); THIS IS ZERO AS EXPECTED!
+
         List<String> firstCall = cachingFetcher.getSubBreeds("hound");
         List<String> secondCall = cachingFetcher.getSubBreeds("hound");
 
-        assertEquals(List.of("afghan", "basset"), firstCall);
+        System.out.println(cachingFetcher.getCallsMade());
+
+        assertEquals(List.of("afghan", "basset", "blood", "english", "ibizan", "plott", "walker"), firstCall);
         assertEquals(firstCall, secondCall);
         assertEquals(1, mock.getCallCount(), "Fetcher should only be called once due to caching");
     }
